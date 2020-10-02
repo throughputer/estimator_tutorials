@@ -40,6 +40,7 @@ this.prediction = new Prediction(
 Replace ```<Insert-your-secret-token> ``` with your secret token. 
 You can find your secret token at __[estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
 
+``` Note: Never use your Secret Token on the frontend, it should always be used on the backend to avoid any unauthorized access. ```
 ##### Step 6
 start a python3 http server (you can use any http server). You can install Python3 from __[here](https://www.python.org/downloads/)__ 
 ```py
@@ -57,8 +58,7 @@ Open your favorite browser and go type the URL
 ```sh
 http://0.0.0.0:8000/   or    http://localhost:8000/
 ```
+You can see a RPS app running with your secret keys. Check your __[Dashboard](https://estimatorlab.com/dashboard)__ to view the number of calls made to the estimator microservice & keep track of your free credits consumption.
+```Note: The first 3 clicks are used to train the online Machine Learning engine  and not counted towards your usage.```
 
-Let us know if you have any issue by sending an email at info@throughputer.com
-
-We reply back to each email in 1 business day.
-
+Let us know if you have any issue by sending us an email at info@throughputer.com
