@@ -69,6 +69,9 @@ class RPS extends Vue {
       rps.predictionCB(preds, info);
     };
 
+    // To utilize your access to a ThroughPuter Estimator microservice, provide your secret key here, HOWEVER...
+    // IMPORTANT!!! It is your responsibility to keep your secret key secret. This code is visible in a user's web browser,
+    //              and this demo is not intended to be hosted publicly with your private key.
     this.prediction = new Prediction(
       4,
       true,

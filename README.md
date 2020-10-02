@@ -26,6 +26,11 @@ $ vim js/rps.js
 
 ##### Step 4 
 go the line number 75
+```sh
+ To utilize your access to a ThroughPuter Estimator microservice, provide your secret key here, HOWEVER...
+ IMPORTANT!!! It is your responsibility to keep your secret key secret. This code is visible in a user's web browser,
+ and this demo is not intended to be hosted publicly with your private key.
+```
 ```js
 this.prediction = new Prediction(
       4,
