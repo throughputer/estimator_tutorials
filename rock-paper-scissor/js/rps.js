@@ -19,14 +19,13 @@ class RPS extends Vue {
     this.wins = {
       human: 0,
       ai: 0,
-      tie: 0
-    }
+      tie: 0,
+    };
     this.winner_message = {
       human: "You WIN!!!",
       ai: "You Lose",
-      tie: "Tie"
-    }
-
+      tie: "Tie",
+    };
 
     // ****************************
     // DEBUG
@@ -45,10 +44,9 @@ class RPS extends Vue {
 
       rps.makePrediction();
 
-
       // JQuery bindings.
 
-      $("#reveal").change(function() {
+      $("#reveal").change(function () {
         if (this.checked) {
           $("#AI-player").addClass("reveal");
         } else {
@@ -56,24 +54,28 @@ class RPS extends Vue {
         }
       });
 
-      $("#human-player .hand-container").click(
-        function(evt) {
-          if (rps.ready) {
-            $("#human-player .hand-container").removeClass("selected");
-            $(".hand-selected-img", this).parent().addClass("selected");
+      $("#human-player .hand-container").click(function (evt) {
+        if (rps.ready) {
+          $("#human-player .hand-container").removeClass("selected");
+          $(".hand-selected-img", this).parent().addClass("selected");
 
-            rps.determineWinner(parseInt(this.getAttribute("data-hand-index")));
-            rps.makePrediction();
-          }
+          rps.determineWinner(parseInt(this.getAttribute("data-hand-index")));
+          rps.makePrediction();
         }
-      )
-    }
+      });
+    };
 
     let predictionCB = (preds, info) => {
       rps.predictionCB(preds, info);
-    }
+    };
 
-    this.premonition = new Premonition(4, true, `wss://passgraf.com:2083/ws/00ullquoySqhdXoEe4x6`, predictionCB, wsReady);
+    this.prediction = new Prediction(
+      4,
+      true,
+      `wss://passgraf.com:2083/ws/<Insert-your-secret-token>`,
+      predictionCB,
+      wsReady
+    );
 
     //wsReady();
   }
@@ -89,24 +91,30 @@ class RPS extends Vue {
   }
   // Return human", "ai", or "tie" for a contest.
   winner(human_index, ai_index) {
-    return (human_index == ai_index)                    ? "tie" :
-           (human_index == this.winningIndex(ai_index)) ? "human" :
-                                                          "ai";
+    return human_index == ai_index
+      ? "tie"
+      : human_index == this.winningIndex(ai_index)
+      ? "human"
+      : "ai";
   }
 
   // The human has played. Conduct the contest.
   determineWinner(human_index) {
     // Update state.
-    this.premonition.pushValue(human_index);
+    this.prediction.pushValue(human_index);
     let ai_index = this.ai_history[this.ai_history.length - 1];
     let winner = this.winner(human_index, ai_index);
     this.wins[winner]++;
     // Reflect AI play in DOM.
     $(`#${winner}-score`).text(this.wins[winner].toString());
     $("#AI-player .hand-container").removeClass("selected");
-    $(`#AI-player .hand-container[data-hand-index=${ai_index}]`).addClass("selected");
+    $(`#AI-player .hand-container[data-hand-index=${ai_index}]`).addClass(
+      "selected"
+    );
     $("#winner-message").text(this.winner_message[winner]);
-    console.log(`Contest: Human: ${human_index}; AI: ${ai_index}. ${this.winner_message[winner]}`);
+    console.log(
+      `Contest: Human: ${human_index}; AI: ${ai_index}. ${this.winner_message[winner]}`
+    );
   }
 
   predictionCB(preds, info) {
@@ -115,12 +123,16 @@ class RPS extends Vue {
     var ai_play_index = this.winningIndex(pred_index);
     this.ai_history.push(ai_play_index);
     // Ready to play, but introduce a minimum delay while the DOM conveys the result of the previous battle.
-    $('.probabilities').text('');  // Clear old predictions in DOM.
+    $(".probabilities").text(""); // Clear old predictions in DOM.
     window.setTimeout(() => {
       // Reflect selection in DOM.
-      $(`#AI-player .hand-container[data-hand-index=${ai_play_index}]`).addClass("chosen");
+      $(
+        `#AI-player .hand-container[data-hand-index=${ai_play_index}]`
+      ).addClass("chosen");
       preds.forEach((pred, index) => {
-        $(`.probability[index=${this.winningIndex(pred.est)}]`).text(`${(pred.num / pred.denom).toFixed(2)}`);
+        $(`.probability[index=${this.winningIndex(pred.est)}]`).text(
+          `${(pred.num / pred.denom).toFixed(2)}`
+        );
       });
       console.log(`Prediction: ${JSON.stringify(preds)}`);
       if (this.auto_play.length > 0) {
@@ -136,9 +148,11 @@ class RPS extends Vue {
 
   // Make the given prediction.
   _manufacturedPrediction(index) {
-      return [{est: index,           num: 1, denom: 3},
-              {est: (index + 1) % 3, num: 1, denom: 3},
-              {est: (index + 2) % 3, num: 1, denom: 3}];
+    return [
+      { est: index, num: 1, denom: 3 },
+      { est: (index + 1) % 3, num: 1, denom: 3 },
+      { est: (index + 2) % 3, num: 1, denom: 3 },
+    ];
   }
 
   // Predict the human's next play, and, based on that, the AI's next play.
@@ -148,35 +162,26 @@ class RPS extends Vue {
     this.ready = false;
     $("#AI-player .hand-container").removeClass("chosen");
     // Predict human play.
-    if (! this.premonition.predict()) {
-      this.predictionCB(this._manufacturedPrediction(this.randomHandIndex()), null);
+    if (!this.prediction.predict()) {
+      this.predictionCB(
+        this._manufacturedPrediction(this.randomHandIndex()),
+        null
+      );
     }
   }
-
 }
 
-
-
-$( document ).ready(function() {
+$(document).ready(function () {
   var rps_app = new RPS({
-    el: '#body',
+    el: "#body",
     data: {
-      players: [
-        { name: "human" },
-        { name: "AI" }
-      ],
+      players: [{ name: "human" }, { name: "AI" }],
       hands: [
-        { index: 0,
-          name: "rock"
-        },
-        { index: 1,
-          name: "paper"
-        },
-        { index: 2,
-          name: "scissors"
-        }
+        { index: 0, name: "rock" },
+        { index: 1, name: "paper" },
+        { index: 2, name: "scissors" },
       ],
-      ready: false
-    }
-  })
-})
+      ready: false,
+    },
+  });
+});

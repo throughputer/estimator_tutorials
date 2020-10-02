@@ -4,7 +4,7 @@
 // In other words, the X values are previous Y values.
 
 
-class Premonition extends Estimator {
+class Prediction extends Estimator {
   // Args:
   //   depth: Number of values of history to use for the next prediction.
   //   prob: [true/false] Make probablistic predictions.
