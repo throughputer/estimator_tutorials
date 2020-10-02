@@ -5,7 +5,6 @@ __Live Demo :__  __[click me!](https://estimatorlab.com/rock_paper_scissors/inde
 
   - You must have your secret token. Don't have? Try playing with our demo apps on __[estimatorlab.com](https://estimatorlab.com/)__ to get one.
   - Python3 installed . You can install it from https://www.python.org/downloads/
-  - Magic
 
 ### Steps to get your app running
 
