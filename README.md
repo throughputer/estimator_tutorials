@@ -3,7 +3,7 @@ __Live Demo :__  __[click me!](https://estimatorlab.com/rock_paper_scissors/inde
 
 ### Prerequisite.
 
-  - You must have your secret token. Don't have? Try playing with our demo apps on __[estimatorlab.com](https://estimatorlab.com/)__ to get one.
+  - You must have your secret token. Don't have one? Try playing with our demo apps on __[estimatorlab.com](https://estimatorlab.com/)__ to earn one.
   - Python3 installed . You can install it from https://www.python.org/downloads/
 
 ### Steps to get your app running
@@ -44,25 +44,26 @@ this.prediction = new Prediction(
 Replace ```<Insert-your-secret-token> ``` with your secret token. 
 You can find your secret token at __[estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
 
-``` Note: Never use your Secret Token on the frontend, it should always be used on the backend to avoid any unauthorized access. ```
+```
+Note: Always keep your Secret Token secret. This demo app is NOT built to be hosted publicly. Generally, unlike this demo, only the back end of your web application should connect to your private Estimator microservice.
+```
+
 ##### Step 6
-start a python3 http server (you can use any http server). You can install Python3 from __[here](https://www.python.org/downloads/)__ 
+Start a python3 http server (or any http server). You can install Python3 from __[here](https://www.python.org/downloads/)__ 
 ```py
 python3 -m http.server
 ```
 
-If you followed the each of the step, you will have a http server running on Port 8000
-which would look like:
+You should see the following, showing that your http server is running on Port 8000:
 ```sh
-ashish@Ashishs-MacBook-Air rock-paper-scissor % python3 -m http.server
 Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
 ```
 ##### Step 6
-Open your favorite browser and go type the URL
+Open your favorite browser and enter the URL:
 ```sh
-http://0.0.0.0:8000/   or    http://localhost:8000/
+http://localhost:8000/
 ```
 You can see a RPS app running with your secret keys. Check your __[Dashboard](https://estimatorlab.com/dashboard)__ to view the number of calls made to the estimator microservice & keep track of your free credits consumption.
 ```Note: The first 3 clicks are used to train the online Machine Learning engine  and not counted towards your usage.```
 
-Let us know if you have any issue by sending us an email at info@throughputer.com
+Questions? We can be reached at [info@throughputer.com]
