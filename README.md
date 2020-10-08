@@ -4,7 +4,7 @@ __Live Demo :__  __[click me!](https://estimatorlab.com/rock_paper_scissors/inde
 ### Prerequisite.
 
   - You must have your secret token. Don't have one? Try playing with our demo apps on __[estimatorlab.com](https://estimatorlab.com/)__ to earn one.
-  - Python3 installed . You can install it from https://www.python.org/downloads/
+  - Python3 installed. You can install it from https://www.python.org/downloads/
 
 ### Steps to get your app running
 
@@ -19,7 +19,7 @@ change directory
 $ cd rock-paper-scissor
 ```
 ##### Step 3
-open the file ``` js/rps.js``` using any editor.
+open the file ``` js/rps.js``` using any editor
 ```sh
 $ vim js/rps.js
 ```
