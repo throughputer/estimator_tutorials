@@ -34,23 +34,36 @@
 // message response. (This is the default behavior if the web server and host application are not customized.)
 class fpgaServer {
 
-  constructor() {
-    this.host = location.hostname;
-    this.port = location.port;
-    this.url_path = "/ws";
+  // Params:
+  //   ws_url: (opt) if given, connect to the given WebSocket URL;
+  //           o.w. one of the connect* functions must be called explicitly.
+  //   cp: (opt) if ws_url is given, the cb arg for connectURL(..).
+  constructor(ws_url, cb) {
+    this.reconnect_cnt = 0;
+    this.reconnect_time = null;
     this.f1_state = "stopped";
     this.f1_ip = false;
+    if (ws_url) {
+      this.connectURL(ws_url, cb);
+    } else {
+      this.host = location.hostname;
+      this.port = location.port;
+      this.url_path = "/ws";
+    }
   }
 
-  // Connect the websocket, and, optionally, call cb once the WebSocket is ready.
-  connect(cb) {
+  // Connect the websocket.
+  // Params:
+  //   ws_url: The URL of the websocket to which to connect.
+  //   cb: (opt) callback once the WebSocket is ready (WebSocket.onopen) or a set of callbacks for
+  //       the WebSocket of the form {onopen: function(), onmessage: function(msg), onclose: function(), onerror: function()}.
+  connectURL(ws_url, cb) {
+    this.url = ws_url;
 
     /* TODO:
     // For 1-to-1. Called
     this._ws_handler = function(resolve, reject, message) {
-
     }
-
     // Each sent message gets a corresponding in-order response. This FIFO array holds pending messages.
     // [0] is the oldest message (next response).
     // Each element holds: {
@@ -62,11 +75,90 @@ class fpgaServer {
     this.pendingObjects = [];
     */
 
-    this.ws = new WebSocket("ws://" + this.host + ":" + this.port + this.url_path);
+    this.ws = new WebSocket(ws_url);
+
+    // Set callbacks for ws.
+
+    let onopen = null;
+    let onclose = null;
+    // Default onerror function that reports to console.
+    this.ws.onerror = function(evt) {
+      console.log(`WebSocket error.`);
+    }
+    // Apply WebSocket callbacks.
     if (cb) {
-      this.ws.onopen = cb;
+      if (typeof cb === 'object' && cb !== null) {
+          if ('onopen' in cb) {
+            onopen = cb.onopen;
+          }
+          if ('onmessage' in cb) {
+            this.ws.onmessage = cb.onmessage;
+          }
+          if ('onclose' in cb) {
+            onclose = cb.onclose;
+          }
+          if ('onerror' in cb) {
+            this.ws.onerror = cb.onerror;
+          }
+      } else {
+        onopen = cb;
+      }
+      // Set this.ws.onopen to include behavior for keeping the websocket alive.
+      let ping_ms = 20000;
+      let keepAlive = () => {
+        if (this.ws.readyState == this.ws.OPEN) {
+          try {
+            this.ping();
+          } catch {
+            console.log("Ping failed.");
+          }
+          console.log("Pinged.");
+        }
+        // Ping again if the websocket is still open (or connecting)
+        if (this.ws.readyState == this.ws.OPEN ||
+            this.ws.readyState == this.ws.CONNECTING) {
+          setTimeout(keepAlive, ping_ms);
+        }
+      }
+      this.ws.onopen = () => {
+        setTimeout(keepAlive, ping_ms);
+        if (onopen) {
+          onopen();
+        }
+      }
+      // Set onclose to attempt to silently reconnect before calling user's onclose.
+      this.ws.onclose = () => {
+        try {
+          // See if it's okay to reconnect.
+          this.reconnect_cnt++;
+          if (this.reconnect_cnt > 10) {
+            this.reconnect_cnt = 0;
+            let now = new Date();
+            if (this.reconnect_time && (now < this.reconnect_time + 2000)) {
+              throw new Error("Reconnected numerous times in small window of time.");
+            }
+            this.reconnect_time = new Date();
+          }
+          console.log("Attempting to reconnect to WebSocket.");
+          this.connectURL(this.url);
+        } catch (e) {
+          console.log(`WebSocket closed and couldn't reconnect. Error: ${e.message}`);
+          if (onclose) {
+            onclose();
+          }
+        }
+      }
     }
   }
+
+  // Connect the websocket.
+  // Params:
+  //   cb: (opt) callback once the WebSocket is ready (WebSocket.onopen) or a set of callbacks for
+  //       the WebSocket of the form {onopen: function(), onmessage: function(msg), onclose: function(), onerror: function()}.
+  connect(cb) {
+    this.connectURL("ws://" + this.host + ":" + this.port + this.url_path, cb);
+  }
+
 
   connectTo(host, port = 80, url_path = "/ws", cb) {
     this.host = host;
@@ -83,6 +175,10 @@ class fpgaServer {
       // Wrap user object as expected by FPGA server.
       this.ws.send(JSON.stringify({ "type": type, "payload": payload }));
     }
+  }
+
+  ping() {
+    this.ws.send(JSON.stringify({ "type": "PING", payload: {} }));
   }
 
   startTracing() {
