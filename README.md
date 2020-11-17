@@ -1,5 +1,5 @@
 # Get your Estimator powered app running in 5 minutes
-__Live Demo :__  __[click me!](https://estimatorlab.com/rock_paper_scissors/index.html)__
+__Live Demo :__  __[click me!](https://estimatorlab.com/rps)__
 
 ### Prerequisite.
 
