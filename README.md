@@ -31,9 +31,6 @@ go the line number 75
  IMPORTANT!!! It is your responsibility to keep your API key secret. This code is visible in a user's web browser,
  and this demo is not intended to be hosted publicly with your private key.
 ```
-```sh
-replace <Insert-your-API-key> with your actual API key.
-```
 ```js
 this.prediction = new Prediction(
       4,
@@ -45,7 +42,7 @@ this.prediction = new Prediction(
 ```
 ##### Step 5
 Replace ```<Insert-your-API-key> ``` with your API key. 
-You can find your API key at __[estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
+You can find your API key at __[https://estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
 
 ```
 Note: Always keep your API key secret. This demo app is NOT built to be hosted publicly. Generally, unlike this demo, only the back end of your web application should connect to your private Estimator microservice.
