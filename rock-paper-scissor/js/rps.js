@@ -30,8 +30,8 @@ class RPS extends Vue {
       tie: 0,
     };
     this.winner_message = {
-      human: "You WIN!!!",
-      ai: "You Lose",
+      human: "You WON!!!",
+      ai: "AI WON",
       tie: "Tie",
     };
 
@@ -46,6 +46,13 @@ class RPS extends Vue {
       2,2,2,2,2,2,2,2,2,2
       */
     ];
+
+    let onclosefn = function () {
+      alert("WebSocket connection closed. Please refresh the page.");
+    };
+    let onerrorfn = function () {
+      alert("Error occured");
+    };
 
     let wsReady = function () {
       // Websocket is ready. Start doing stuff.
@@ -83,9 +90,9 @@ class RPS extends Vue {
     this.prediction = new Prediction(
       4,
       true,
-      `wss://passgraf.com:2083/ws/<Insert-your-secret-token>`,
+      `wss://passgraf.com:2083/ws/<Insert-your secret-token>`,
       predictionCB,
-      wsReady
+      { onopen: wsReady, onclose: onclosefn, onerror: onerrorfn }
     );
 
     //wsReady();
