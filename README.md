@@ -31,6 +31,9 @@ go the line number 75
  IMPORTANT!!! It is your responsibility to keep your API key secret. This code is visible in a user's web browser,
  and this demo is not intended to be hosted publicly with your private key.
 ```
+```sh
+replace <Insert-your-API-key> with your actual API key.
+```
 ```js
 this.prediction = new Prediction(
       4,
