@@ -65,9 +65,7 @@ class fpgaServer {
     /* TODO:
     // For 1-to-1. Called
     this._ws_handler = function(resolve, reject, message) {
-
     }
-
     // Each sent message gets a corresponding in-order response. This FIFO array holds pending messages.
     // [0] is the oldest message (next response).
     // Each element holds: {
