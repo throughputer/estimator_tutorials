@@ -51,7 +51,12 @@ Note: Always keep your API key secret. This demo app is NOT built to be hosted p
 ##### Step 6
 Start a python3 http server (or any http server). You can install Python3 from __[here](https://www.python.org/downloads/)__ 
 ```py
+For mac/linux based systems
 python3 -m http.server
+```
+```py
+For windows based systems
+py -m http.server
 ```
 
 You should see the following, showing that your http server is running on Port 8000:
