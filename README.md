@@ -3,7 +3,7 @@ __Live Demo :__  __[click me!](https://estimatorlab.com/rps)__
 
 ### Prerequisite.
 
-  - You must have your API key. Don't have one? Try playing with our demo apps on __[estimatorlab.com](https://estimatorlab.com/)__ to earn one.
+  - You must have your API key. Don't have one? Try playing with our demo apps on __[https://estimatorlab.com](https://estimatorlab.com/)__ to earn one.
   - Python3 installed. You can install it from https://www.python.org/downloads/
 
 ### Steps to get your app running
@@ -41,7 +41,7 @@ this.prediction = new Prediction(
     );
 ```
 ##### Step 5
-Replace ```<Insert-your-API-key> ``` with your API key. 
+Replace ```<Insert-your-API-key> ``` (so that the < > marks get eliminated) with your API key. 
 You can find your API key at __[https://estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
 
 ```
