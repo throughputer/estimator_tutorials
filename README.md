@@ -9,8 +9,14 @@ __Live Demo :__  __[click me!](https://estimatorlab.com/rps)__
 ### Steps to get your app running
 
 ##### Step 1
-clone the repository
+Download or clone the repository
+
 ```sh
+Download link
+https://github.com/throughputer/estimator_tutorials/archive/main.zip
+```
+```sh
+Clone command
 $ git clone https://github.com/throughputer/estimator_tutorials.git
 ```
 ##### Step 2
