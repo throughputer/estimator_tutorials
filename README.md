@@ -74,7 +74,14 @@ Open your favorite browser and enter the URL:
 ```sh
 http://localhost:8000/
 ```
+
+All done!
+
 You can see a RPS app running with your API key. Check your __[Dashboard](https://estimatorlab.com/dashboard)__ to view the number of calls made to the estimator microservice & keep track of your free credits consumption.
 ```Note: The first 3 clicks are used to train the online Machine Learning engine  and not counted towards your usage.```
+
+## What next?
+
+Now you can try your hand at writing your own application. The available Estimator APIs are [documented here](https://github.com/throughputer/estimator_lib/blob/master/EstimatorAPI.md).
 
 Questions? [Contact Us](https://estimatorlab.com/form)
