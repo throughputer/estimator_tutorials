@@ -31,7 +31,7 @@ $ vim js/rps.js
 ```
 
 ##### Step 4 
-go the line number 75
+go the line number 90
 ```sh
  To utilize your access to a ThroughPuter Estimator microservice, provide your API key here, HOWEVER...
  IMPORTANT!!! It is your responsibility to keep your API key secret. This code is visible in a user's web browser,
@@ -41,9 +41,9 @@ go the line number 75
 this.prediction = new Prediction(
       4,
       true,
-      `wss://passgraf.com:2083/ws/<Insert-your-API-key>`,
+      `wss://passgraf.com:2083/ws/<Insert-your secret-token>`,
       predictionCB,
-      wsReady
+      { onopen: wsReady, onclose: onclosefn, onerror: onerrorfn }
     );
 ```
 ##### Step 5
