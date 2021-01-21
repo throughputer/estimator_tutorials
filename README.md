@@ -75,6 +75,8 @@ Open your favorite browser and enter the URL:
 http://localhost:8000/
 ```
 
+Confirm that you have connected successfully with your Estimator microservice instance by playing more than four moves of Rock-Paper-Scissors to see that the AI is making moves. (Only after the first four plays is the Estimator trained to make predictions.)
+
 #### All done!
 
 You can see a RPS app running with your API key. Check your __[Dashboard](https://estimatorlab.com/dashboard)__ to view the number of calls made to the estimator microservice & keep track of your free credits consumption.
