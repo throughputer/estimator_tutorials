@@ -55,13 +55,15 @@ Note: Always keep your API key secret. This demo app is NOT built to be hosted p
 ```
 
 ##### Step 6
-Start a python3 http server (or any http server). You can install Python3 from __[here](https://www.python.org/downloads/)__ 
+From the `rock-paper-scissor` directory, start a python3 http server (or any http server). You can install Python3 from __[here](https://www.python.org/downloads/)__ 
+
+For mac/linux based systems:
 ```py
-For mac/linux based systems
 python3 -m http.server
 ```
+
+For windows based systems:
 ```py
-For windows based systems
 py -m http.server
 ```
 
@@ -75,7 +77,7 @@ Open your favorite browser and enter the URL:
 http://localhost:8000/
 ```
 
-Confirm that you have connected successfully with your Estimator microservice instance by playing more than four moves of Rock-Paper-Scissors to see that the AI is making moves. (Only after the first four plays is the Estimator trained to make predictions.)
+Confirm that you have connected successfully with your Estimator microservice instance by playing **more than four moves** of Rock-Paper-Scissors to see that the AI is making moves. (The first four predictions are random while the Estimator is trained.)
 
 #### All done!
 
