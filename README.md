@@ -31,7 +31,7 @@ $ vim js/rps.js
 ```
 
 ##### Step 4 
-go the line number 90
+go to line number 90
 ```sh
  To utilize your access to a ThroughPuter Estimator microservice, provide your API key here, HOWEVER...
  IMPORTANT!!! It is your responsibility to keep your API key secret. This code is visible in a user's web browser,
@@ -48,7 +48,7 @@ this.prediction = new Prediction(
 ```
 ##### Step 5
 Replace ```<URL> ``` and  ```<Insert-your-API-key> ``` (so that the < > marks get eliminated) with the URL and API key on your dashboard. 
-You can find your  URL and API key at __[https://estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
+You can find your URL and API key at __[https://estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
 
 ```
 Note: Always keep your API key secret. This demo app is NOT built to be hosted publicly. Generally, unlike this demo, only the back end of your web application should connect to your private Estimator microservice.
@@ -82,7 +82,7 @@ Confirm that you have connected successfully with your Estimator microservice in
 #### All done!
 
 You can see a RPS app running with your API key. Check your __[Dashboard](https://estimatorlab.com/dashboard)__ to view the number of calls made to the estimator microservice & keep track of your free credits consumption.
-```Note: The first 3 clicks are used to train the online Machine Learning engine  and not counted towards your usage.```
+```Note: The first 3 clicks are used to train the online Machine Learning engine and not counted towards your usage.```
 
 ## What's next?
 
