@@ -88,6 +88,6 @@ You can see a RPS app running with your API key. Check your __[Dashboard](https:
 
 Now you can try your hand at writing your own application. The available Estimator APIs are [documented here](https://github.com/throughputer/estimator_lib/blob/master/EstimatorAPI.md).
 
-Your trial Estimator microservice supports four variables used to predict from among up to four class values.
+Your trial Estimator microservice supports four variables (in the range 0-255) used to predict from among up to four class values (in the range 0-3). Modifications to these parameters can be [requested](https://estimatorlab.com/form).
 
 **Questions?** [Contact Us](https://estimatorlab.com/form)
