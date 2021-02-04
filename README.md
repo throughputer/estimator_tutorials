@@ -6,7 +6,7 @@ __Live Demo :__  __[click me!](https://estimatorlab.com/rps)__
   - You must have your API key. Don't have one? Try playing with our demo apps on <a href="https://estimatorlab.com/" target="_blank">EstimatorLab.com</a>  to earn one.
   - Python3 installed. You can install it from https://www.python.org/downloads/
   
-  __[https://estimatorlab.com](https://estimatorlab.com/)__
+  __[https://estimatorlab.com](https://estimatorlab.com/)__{:target="_blank"}
 
 ### Steps to get your app running
 
