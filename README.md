@@ -41,14 +41,14 @@ go the line number 90
 this.prediction = new Prediction(
       4,
       true,
-      `wss://passgraf.com:2083/ws/<Insert-your secret-token>`,
+      `<URL>/ws/<Insert-your API key>`,
       predictionCB,
       { onopen: wsReady, onclose: onclosefn, onerror: onerrorfn }
     );
 ```
 ##### Step 5
-Replace ```<Insert-your-API-key> ``` (so that the < > marks get eliminated) with your API key. 
-You can find your API key at __[https://estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
+Replace ```<URL> ``` and  ```<Insert-your-API-key> ``` (so that the < > marks get eliminated) with the URL and API key on your dashboard. 
+You can find your  URL and API key at __[https://estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ 
 
 ```
 Note: Always keep your API key secret. This demo app is NOT built to be hosted publicly. Generally, unlike this demo, only the back end of your web application should connect to your private Estimator microservice.
