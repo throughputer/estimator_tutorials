@@ -1,5 +1,5 @@
 # Get your Estimator powered app running in 5 minutes
-__Live Demo :__  __[click me!](https://estimatorlab.com/rps)__
+__Live Demo :__  __[click me!](https://estimatorlab.com/rps)__\
 (Note: We recommend you open all links on a new tab so you can work side by side with the github README)
 
 ### Prerequisite.
