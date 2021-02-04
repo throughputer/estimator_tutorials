@@ -1,7 +1,7 @@
 # Get your Estimator powered app running in 5 minutes
 __Live Demo :__  __[click me!](https://estimatorlab.com/rps)__\
 (Note: We recommend you open all links on a new tab so you can work side by side with the github README)\
-  - <a href="http://www.makerchip.com/sandbox?code_url=https:%2F%2Fraw.githubusercontent.com%2Fstevehoover%2Fmakerchip_examples%2Fmaster%2Flife_viz.tlv" target="_blank" atom_fix="_">life_viz.tlv</a>
+
 
 ### Prerequisite.
 
