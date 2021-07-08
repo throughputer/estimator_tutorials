@@ -54,7 +54,7 @@ and this demo is not intended to be hosted publicly with your private key.
 this.prediction = new Prediction(
       4,
       true,
-      `<URL>/ws/<Insert-your API key>`,   // Copy-paste from estimatorlab.com/estimator >> Estimator API Key >> Show API Key >> Copy.
+      `<URL>`,   // Copy-paste from estimatorlab.com/estimator >> Estimator API Key >> Show API Key >> Copy.
       predictionCB,
       { onopen: wsReady, onclose: onclosefn, onerror: onerrorfn }
     );
@@ -62,8 +62,8 @@ this.prediction = new Prediction(
 
 ##### Step 5
 
-Replace ```<URL> ``` and  ```<Insert-your-API-key> ``` (so that the < > marks get eliminated) with the URL and API key on your dashboard. 
-You can find your URL and API key by navigating to __[https://estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ and clicking on the Estimator API Key tab on the side
+Replace ```<URL> ``` (so that the < > marks get eliminated).
+You can access your URL by navigating to __[https://estimatorlab.com/estimator](https://estimatorlab.com/estimator)__ and clicking on the Estimator API Key tab on the side, "Show API Key", and "Copy".
 
 *Note:* Always keep your API key secret. This demo app is NOT built to be hosted publicly. Generally, unlike this demo, only the back end of your web application should connect to your private Estimator microservice.
 
