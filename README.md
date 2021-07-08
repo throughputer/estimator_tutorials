@@ -45,7 +45,7 @@ go to line number 90
 this.prediction = new Prediction(
       4,
       true,
-      `<URL>/ws/<Insert-your API key>`,
+      `<URL>/ws/<Insert-your API key>`,   // Copy-paste from estimatorlab.com/estimator >> Estimator API Key >> Show API Key >> Copy.
       predictionCB,
       { onopen: wsReady, onclose: onclosefn, onerror: onerrorfn }
     );
