@@ -90,7 +90,7 @@ class RPS extends Vue {
     this.prediction = new Prediction(
       4,
       true,
-      `wss://passgraf.com:2083/ws/<Insert-your secret-token>`,
+      `wss://passgraf.com:2083/ws/<Insert-your API Key>`,   // Copy-paste from estimatorlab.com/estimator >> Estimator API Key >> Show API Key >> Copy.
       predictionCB,
       { onopen: wsReady, onclose: onclosefn, onerror: onerrorfn }
     );
