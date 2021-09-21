@@ -89,7 +89,7 @@ class RPS extends Vue {
     //              and this demo is not intended to be hosted publicly with your private key.
     this.prediction = new Prediction(
       4,
-      true,
+      true,      // TODO: This looks suspect. Probablistic objects are not supported yet.
       `<URL>`,   // Copy-paste from estimatorlab.com/estimator >> Estimator API Key >> Show API Key >> Copy.
       predictionCB,
       { onopen: wsReady, onclose: onclosefn, onerror: onerrorfn }
